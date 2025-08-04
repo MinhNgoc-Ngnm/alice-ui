@@ -1,7 +1,7 @@
 {
-  "name": "alice-ui",
-  "private": true,
-  "version": "0.0.0",
+  "name": "ngnm-alice-ui",
+  "private": false,
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
@@ -61,5 +61,14 @@
     "vite-plugin-lib-inject-css": "^2.2.2",
     "vitest": "^3.2.4"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/main.js",
+  "module": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
