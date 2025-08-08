@@ -4,6 +4,7 @@ import { Button } from './index'
 
 const meta = {
   component: Button,
+  tags: ['autodocs'],
 } satisfies Meta<typeof Button>
 
 export default meta
@@ -13,17 +14,16 @@ export const Default: Story = {
   args: {
     children: 'Button',
     variant: 'default',
-    className: ''
+    className: '',
   },
 }
 
 export const Outline: Story = {
   args: {
     children: 'Button',
-    variant: 'outline'
+    variant: 'outline',
   },
 }
-
 
 export const Link: Story = {
   args: {
@@ -34,6 +34,6 @@ export const Link: Story = {
 export const Secondary: Story = {
   args: {
     children: 'Button',
-    variant: 'secondary'
+    variant: 'secondary',
   },
 }

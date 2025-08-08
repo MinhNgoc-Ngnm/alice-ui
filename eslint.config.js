@@ -1,18 +1,21 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from 'eslint-plugin-storybook'
 import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
-import { globalIgnores } from 'eslint/config'
+import storybook from 'eslint-plugin-storybook'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import eslintPluginPrettier from 'eslint-plugin-prettier'
+import { globalIgnores } from 'eslint/config'
 
 export default tseslint.config(
   [
-    globalIgnores(['dist', '.storybook']),
+    globalIgnores(['dist', '.storybook', 'storybook-static']),
     {
       files: ['**/*.{ts,tsx}'],
+      plugins: {
+        prettier: eslintPluginPrettier,
+      },
       extends: [
         js.configs.recommended,
         tseslint.configs.recommended,
@@ -20,6 +23,13 @@ export default tseslint.config(
         reactRefresh.configs.vite,
         eslintConfigPrettier,
       ],
+      rules: {
+        '@typescript-eslint/no-empty-object-type': 'off',
+        'no-empty-pattern': 'off',
+        'react-refresh/only-export-components': 'off',
+        'prettier/prettier': 'error',
+        '@typescript-eslint/no-explicit-any': 'off',
+      },
       languageOptions: {
         ecmaVersion: 2020,
         globals: globals.browser,
@@ -30,5 +40,4 @@ export default tseslint.config(
     files: ['**/*.stories.@(ts|tsx|js|jsx|mjs|cjs)'],
     extends: [...storybook.configs['flat/recommended']],
   },
-  storybook.configs['flat/recommended']
 )

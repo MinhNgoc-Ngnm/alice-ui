@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-import { Switch } from './index'
+import { Checkbox } from './index'
 
 const meta = {
-  component: Switch,
-} satisfies Meta<typeof Switch>
+  component: Checkbox,
+  tags: ['autodocs'],
+} satisfies Meta<typeof Checkbox>
 
 export default meta
 

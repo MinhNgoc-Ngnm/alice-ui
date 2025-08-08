@@ -1,12 +1,16 @@
 import { Checkbox as C, type CheckboxProps } from '@/components/animate-ui/headless/checkbox'
 import React from 'react'
 
-export interface ICheckbox extends CheckboxProps {}
-export type OCheckbox = {}
+export type ICheckbox = CheckboxProps
+export type OCheckbox = HTMLButtonElement
 const Checkbox = React.memo(
   React.forwardRef<OCheckbox, ICheckbox>((props, ref) => {
-    React.useImperativeHandle(ref, () => ({}))
-    return <C {...props} />
+    return (
+      <C
+        {...props}
+        ref={ref}
+      />
+    )
   })
 )
 

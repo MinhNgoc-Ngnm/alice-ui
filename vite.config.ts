@@ -5,19 +5,20 @@ import path, { resolve } from 'path'
 import { fileURLToPath } from 'node:url'
 import { globSync } from 'glob'
 import dts from 'vite-plugin-dts'
-import tailwindcss from "@tailwindcss/vite"
+import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     libInjectCss(),
     dts({ exclude: ['**/*.stories.tsx'], tsconfigPath: 'tsconfig.app.json' }),
-    tailwindcss()
+    tailwindcss(),
   ],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/main.ts'),
-      formats: ['es', 'cjs'],
+      formats: ['es'],
+      fileName: 'main',
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
@@ -44,7 +45,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
 })
